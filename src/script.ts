@@ -19,6 +19,7 @@ document.addEventListener("click", (ev) => {
 
   const planet = new Planet(mass, x, y);
   planet.addEventListener("contextmenu", (ev) => {
+    if (!paused) return;
     if (!ev.ctrlKey) {
       ev.preventDefault();
       planets.splice(planets.indexOf(planet), 1);
