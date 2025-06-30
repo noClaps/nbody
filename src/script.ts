@@ -1,7 +1,7 @@
 import { Planet } from "./scripts/planet";
 import { System } from "./scripts/system";
 
-const planets: Planet[] = [];
+const system = new System();
 let paused = true;
 let timer: number;
 
@@ -11,7 +11,8 @@ document.addEventListener("click", (ev) => {
   const x = ev.pageX;
   const y = ev.pageY;
 
-  for (const p of planets) {
+  for (const p of system.planets) {
+    // don't spawn planets too close together
     if (Math.abs(p.pos.x - x) < 48 && Math.abs(p.pos.y - y) < 48) return;
   }
 
@@ -20,33 +21,38 @@ document.addEventListener("click", (ev) => {
   const planet = new Planet(mass, x, y);
   planet.addEventListener("contextmenu", (ev) => {
     if (!paused) return;
+
     if (!ev.ctrlKey) {
       ev.preventDefault();
-      planets.splice(planets.indexOf(planet), 1);
+      system.removePlanet(planet);
       planet.remove();
     }
   });
 
-  planets.push(planet);
+  system.addPlanet(planet);
 });
 
 document.addEventListener("keypress", (ev) => {
   if (ev.key !== " ") return;
-  if (planets.length < 1) {
+  if (system.planets.length < 1) {
     showToast("Not enough planets, add more!", true);
     return;
   }
 
-  const system = new System(planets);
-
   if (!paused) {
     showToast("Paused", true);
+    for (const p of system.planets) {
+      p.contentEditable = "true";
+    }
     paused = true;
     clearInterval(timer);
     return;
   }
 
   showToast("Playing", false);
+  for (const p of system.planets) {
+    p.contentEditable = "false";
+  }
   paused = false;
   timer = setInterval(() => {
     system.step();

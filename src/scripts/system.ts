@@ -2,11 +2,9 @@ import { Planet } from "./planet";
 
 export class System {
   time: number = 0; // start at time 0s
-  planets: Planet[];
+  planets: Planet[] = [];
 
-  constructor(planets: Planet[]) {
-    this.planets = planets;
-  }
+  constructor() {}
 
   step() {
     this.time++;
@@ -16,5 +14,13 @@ export class System {
       p.updateVel(this.time);
       p.updateAcc(this.planets.filter((planets) => planets !== p));
     }
+  }
+
+  addPlanet(p: Planet) {
+    this.planets.push(p);
+  }
+
+  removePlanet(p: Planet) {
+    this.planets.splice(this.planets.indexOf(p), 1);
   }
 }
