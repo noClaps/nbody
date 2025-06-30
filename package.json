@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "bunx vite src/",
-    "build": "bunx vite build src/ --outDir ../dist --emptyOutDir && cp -r public/* dist/"
+    "build": "bunx vite build src/ --outDir ../dist --emptyOutDir"
   },
   "type": "module"
 }
