@@ -61,3 +61,14 @@ planet-3b {
         visibility 0.25s;
     text-align: center;
 }
+
+.warning {
+    display: none;
+}
+@media (any-hover: none) and (any-pointer: coarse) {
+    /* Touch-only mobile devices */
+    .warning {
+        color: red;
+        display: block;
+    }
+}
