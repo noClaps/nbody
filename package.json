@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "dev": "bunx vite src/",
-    "build": "bunx vite build src/ --outDir ../dist --emptyOutDir"
+    "dev": "bun x rolldown-vite src/",
+    "build": "bun x rolldown-vite build src/ --outDir ../dist --emptyOutDir"
   },
   "type": "module"
 }
