@@ -9,7 +9,7 @@ You'll need [Bun](https://bun.sh).
 Clone the repository:
 
 ```sh
-git clone https://github.com/noClaps/nbody.git
+git clone https://codeberg.org/noClaps/nbody.git
 cd nbody
 ```
 
