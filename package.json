@@ -1,7 +1,0 @@
-{
-  "scripts": {
-    "dev": "npx rolldown-vite src/",
-    "build": "npx rolldown-vite build src/ --outDir ../dist --emptyOutDir"
-  },
-  "type": "module"
-}

@@ -4,7 +4,7 @@ An n-body simulation running in the browser.
 
 ## Build instructions
 
-You'll need [Bun](https://bun.sh).
+You'll need [Monopack](https://codeberg.org/noClaps/monopack).
 
 Clone the repository:
 
