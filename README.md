@@ -16,7 +16,7 @@ cd nbody
 Build the site:
 
 ```sh
-bun run build
+monopack src/index.html
 ```
 
 This will build the site and place the built files in `dist/`
