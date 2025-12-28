@@ -1,19 +1,23 @@
-import { Vector } from "./vector";
+// @ts-check
+
+import { Vector } from "./vector.js";
 
 const G = 6.67343e-11;
 
 export class Planet extends HTMLElement {
-  mass: number;
-  pos: Vector;
-  vel: Vector = new Vector(0, 0); // starting at rest
-  acc: Vector = new Vector(0, 0); // starting at rest
+  /** @type {number} */
+  mass;
+  /** @type {Vector} */
+  pos;
+  vel = new Vector(0, 0); // starting at rest
+  acc = new Vector(0, 0); // starting at rest
 
   /**
-   * @param mass The mass of the planet
-   * @param x The x coordinate of the planet
-   * @param y The y coordinate of the planet
+   * @param {number} mass The mass of the planet
+   * @param {number} x The x coordinate of the planet
+   * @param {number} y The y coordinate of the planet
    */
-  constructor(mass: number, x: number, y: number) {
+  constructor(mass, x, y) {
     super();
 
     this.mass = mass;
@@ -47,11 +51,15 @@ export class Planet extends HTMLElement {
     document.body.removeChild(this);
   }
 
-  /** Calculates the acceleration for a planet. */
-  updateAcc(planets: Planet[]) {
+  /**
+   * Calculates the acceleration for a planet.
+   * @param {Planet[]} planets
+   */
+  updateAcc(planets) {
     const r1 = this.pos;
 
-    const interactions: Vector[] = [];
+    /** @type {Vector[]} */
+    const interactions = [];
     for (const p of planets) {
       const mp = p.mass;
       const rp = p.pos;
@@ -66,11 +74,17 @@ export class Planet extends HTMLElement {
     this.acc = Vector.sum(interactions);
   }
 
-  updateVel(time: number) {
+  /**
+   * @param {number} time
+   */
+  updateVel(time) {
     this.vel = this.vel.add(this.acc.multiply(time));
   }
 
-  updatePos(time: number) {
+  /**
+   * @param {number} time
+   */
+  updatePos(time) {
     this.pos = this.pos
       .add(this.vel.multiply(time))
       .add(this.acc.multiply(time * time));

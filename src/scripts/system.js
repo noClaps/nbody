@@ -1,8 +1,11 @@
-import { Planet } from "./planet";
+// @ts-check
+
+/** @import { Planet } from "./planet.js"; */
 
 export class System {
-  time: number = 0; // start at time 0s
-  planets: Planet[] = [];
+  time = 0; // start at time 0s
+  /** @type {Planet[]} */
+  planets = [];
 
   constructor() {}
 
@@ -16,11 +19,17 @@ export class System {
     }
   }
 
-  addPlanet(p: Planet) {
+  /**
+   * @param {Planet} p
+   */
+  addPlanet(p) {
     this.planets.push(p);
   }
 
-  removePlanet(p: Planet) {
+  /**
+   * @param {Planet} p
+   */
+  removePlanet(p) {
     this.planets.splice(this.planets.indexOf(p), 1);
   }
 }

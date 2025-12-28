@@ -1,9 +1,11 @@
-import { Planet } from "./scripts/planet";
-import { System } from "./scripts/system";
+// @ts-check
+
+import { Planet } from "./scripts/planet.js";
+import { System } from "./scripts/system.js";
 
 const system = new System();
 let paused = true;
-let timer: number;
+let timer = 0;
 
 document.addEventListener("click", (ev) => {
   if (!paused) return;
@@ -59,8 +61,15 @@ document.addEventListener("keypress", (ev) => {
   });
 });
 
-const toast = document.querySelector<HTMLDivElement>("#toast")!;
-function showToast(text: string, stay: boolean) {
+/** @type {HTMLDivElement | null} */
+const toast = document.querySelector("#toast");
+
+/**
+ * @param {string} text
+ * @param {boolean} stay
+ */
+function showToast(text, stay) {
+  if (!toast) throw "Toast element not found";
   toast.innerText = text;
   toast.style.visibility = "visible";
   toast.style.opacity = "1";
