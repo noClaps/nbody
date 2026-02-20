@@ -1,8 +1,0 @@
-{
-  "$schema": "https://unpkg.com/wrangler/config-schema.json",
-  "name": "nbody",
-  "compatibility_date": "2025-12-19",
-  "assets": {
-    "directory": "src",
-  },
-}
