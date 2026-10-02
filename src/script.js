@@ -80,3 +80,10 @@ function showToast(text, stay) {
     toast.style.visibility = "hidden";
   }, 500);
 }
+
+// spawn between 100 and 200 stars
+for (let i = 0; i < Math.random() * 100 + 100; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+  document.body.appendChild(star);
+}

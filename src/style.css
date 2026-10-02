@@ -1,37 +1,59 @@
 body {
-    font-family: -apple-system, system-ui;
+    font-family: ui-sans-serif, sans-serif;
     color: #ccc;
     font-size: 1rem;
 
     background-color: black;
-    background-image:
-        radial-gradient(white, rgba(255, 255, 255, 0.2) 2px, transparent 4px),
-        radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 3px),
-        radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 4px),
-        radial-gradient(
-            rgba(255, 255, 255, 0.4),
-            rgba(255, 255, 255, 0.1) 2px,
-            transparent 3px
-        );
-    background-size:
-        550px 550px,
-        350px 350px,
-        250px 250px,
-        150px 150px;
-    background-position:
-        0 0,
-        40px 60px,
-        130px 270px,
-        70px 100px;
     margin: 0;
     width: 100dvw;
     height: 100dvh;
     overflow: hidden;
 }
+@supports not (--var: random(1, 2)) {
+    body {
+        background-image:
+            radial-gradient(
+                white,
+                rgba(255, 255, 255, 0.2) 2px,
+                transparent 4px
+            ),
+            radial-gradient(
+                white,
+                rgba(255, 255, 255, 0.15) 1px,
+                transparent 3px
+            ),
+            radial-gradient(
+                white,
+                rgba(255, 255, 255, 0.1) 2px,
+                transparent 4px
+            ),
+            radial-gradient(
+                rgba(255, 255, 255, 0.4),
+                rgba(255, 255, 255, 0.1) 2px,
+                transparent 3px
+            );
+        background-size:
+            550px 550px,
+            350px 350px,
+            250px 250px,
+            150px 150px;
+        background-position:
+            0 0,
+            40px 60px,
+            130px 270px,
+            70px 100px;
+    }
+}
 
-main {
-    width: 100dvw;
-    height: 100dvh;
+@supports (--var: random(1, 2)) {
+    .star {
+        width: random(--size, 1px, 3px);
+        height: random(--size, 1px, 3px);
+        background-color: oklch(random(25%, 100%) 0 0);
+        position: absolute;
+        top: random(0dvh, 100dvh);
+        left: random(0dvw, 100dvw);
+    }
 }
 
 planet-3b {
